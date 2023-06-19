@@ -12,16 +12,8 @@ class Solution
    public:
     int findSum(int A[], int N)
     {
-        int l=A[0],h=A[0];
-    	for(int i=0;i<N;i++){
-    	    if(A[i]>h){
-    	        h=A[i];
-    	    }
-    	    else if(A[i]<l){
-    	        l=A[i];
-    	    }
-    	}
-    	return l+h;
+        sort(A,A+N);
+        return A[0]+A[N-1];
     }
 
 };
