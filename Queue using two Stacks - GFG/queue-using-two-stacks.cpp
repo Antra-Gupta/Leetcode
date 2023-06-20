@@ -67,17 +67,15 @@ void StackQueue :: push(int x)
 int StackQueue :: pop()
 {
         // Your Code  
-        int k=-1;
-        if(s1.empty()&&s2.empty()){
+        if(s1.empty()){
             return -1;
         }
-        if(s2.empty()){
-            while(!s1.empty()){
-                s2.push(s1.top());
-                s1.pop();
-            }
+        int top=s1.top();
+        s1.pop();
+        if(s1.empty()){
+            return top;
         }
-            k= s2.top();
-            s2.pop();
-        return k;
+        int temp=pop();
+        s1.push(top);
+        return temp;
 }
