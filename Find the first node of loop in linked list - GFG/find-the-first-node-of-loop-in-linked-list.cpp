@@ -47,22 +47,13 @@ class Solution
     int findFirstNode(Node* head)
     {
         // your code here
-        Node* slow=head;
-        Node* fast=head;
-        while(fast->next!=NULL && fast->next->next !=NULL){
-            slow=slow->next;
-            fast=fast->next->next;
-            if(slow==fast){
-                break;
+        Node* temp=head;
+        while(temp!=NULL){
+            if(temp->data<0){
+                return (-1)* (temp->data);
             }
-        }
-        if(slow==fast){
-            fast=head;
-            while(slow!=fast){
-            slow=slow->next;
-            fast=fast->next;
-            }
-            return slow->data;
+            temp->data=(-1)* (temp->data);
+            temp=temp->next;
         }
         return -1;
     }
