@@ -146,7 +146,7 @@ Node *construct(vector<int>v,int start,int end){
     int mid=(start+end)/2;
     Node *root=new Node(v[mid]);
     root->left=construct(v,start,mid-1);
-    root->left=construct(v,mid+1,end);
+    root->right=construct(v,mid+1,end);
     return root;
     
 }
