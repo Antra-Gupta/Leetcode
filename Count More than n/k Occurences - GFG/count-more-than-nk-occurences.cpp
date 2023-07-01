@@ -15,10 +15,9 @@ class Solution
     int ans=0;
        for(int i=0;i<n;i++){
            mp[arr[i]]++;
-       }
-       for(int i=0;i<mp.size();i++){
-           if(mp[i]>n/k){
+           if(mp[arr[i]]>n/k){
                ans++;
+               mp[arr[i]]=INT_MIN;
            }
        }
        return ans;
