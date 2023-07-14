@@ -6,23 +6,37 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> overlappedInterval(vector<vector<int>>& intervals) {
-         vector<vector<int>> ans;
-       if(intervals.size()==0){
-           return ans;
-       }
-       sort(intervals.begin(),intervals.end());
-       vector<int> temp=intervals[0];
-       for(auto it : intervals){
-           if(it[0]<=temp[1]){
-               temp[1]=max(temp[1],it[1]);
-           }
-           else{
-               ans.push_back(temp);
-               temp=it;
-           }
-       }
-       ans.push_back(temp);
-       return ans;
+       vector<vector<int>> ans;
+        int t;
+        sort(intervals.begin(),intervals.end());
+        stack<int>s;
+        int n=intervals.size();
+        s.push(intervals[0][0]);
+        s.push(intervals[0][1]);
+        for(int i=1;i<n;i++){
+            if(s.top()<intervals[i][0]){
+            s.push(intervals[i][0]);
+            s.push(intervals[i][1]);
+            }
+            else{
+                if(!s.empty())
+                t = s.top();
+                s.pop();
+                s.push(max(t,intervals[i][1]));   
+            }
+        }
+        int k=0;
+        while(s.size()>=2){
+            int a,b;
+            a=(s.top());
+            s.pop();
+            b=(s.top());
+            s.pop();
+            ans.push_back({b,a});
+            
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
     }
 };
 
