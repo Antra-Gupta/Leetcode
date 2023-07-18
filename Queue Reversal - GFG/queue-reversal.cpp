@@ -11,21 +11,19 @@ using namespace std;
 class Solution
 {
     public:
+    void solve(queue<int> &q){
+        if(q.size()==1){
+            return;
+        }
+        int temp=q.front();
+        q.pop();
+        solve(q);
+        q.push(temp);
+    }
     queue<int> rev(queue<int> q)
     {
-        stack<int> s;
-        int n=q.size();
-        for(int i=0;i<n;i++){
-            int temp=q.front();
-            s.push(temp);
-            q.pop();
-        }
-        while(!s.empty()){
-            q.push(s.top());
-            s.pop();
-        }
-        
-        return q;
+       solve(q);
+       return q;
     }
 };
 
