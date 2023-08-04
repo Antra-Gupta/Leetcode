@@ -10,26 +10,16 @@ using namespace std;
 
 class Solution{
 public:
-void insertAtBottom(stack <int> &St, int e){
-    if(St.empty()){
-        St.push(e);
-        return;
-    }
-    int topelement=St.top();
-    St.pop();
-    insertAtBottom(St,e);
-    St.push(topelement);
-    
-}
     void Reverse(stack<int> &St){
-        if(St.empty()){
-            return;
+        queue<int> q;
+        while(!St.empty()){
+            q.push(St.top());
+            St.pop();
         }
-        int e=St.top();
-        St.pop();
-        Reverse(St);
-        insertAtBottom(St,e);
-        
+        while(!q.empty()){
+            St.push(q.front());
+            q.pop();
+        }
     }
 };
 
