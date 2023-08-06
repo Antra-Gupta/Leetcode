@@ -134,8 +134,8 @@ vector<int> findSpiral(Node *root)
        return ans;
    }
    bool reverse=false;
-   stack<Node*> curr;
-   stack<Node*> next;
+   stack<Node *> curr;
+   stack<Node *> next;
    int i=0;
    curr.push(root);
    while(!curr.empty()){
@@ -156,16 +156,15 @@ vector<int> findSpiral(Node *root)
            if(temp->right){
                next.push(temp->right);
            }
-            if(temp->left){
+           if(temp->left){
                next.push(temp->left);
            }
-           
        }
        if(curr.empty()){
            reverse=!reverse;
            swap(curr,next);
        }
-       
    }
-   return ans;
+
+  return ans;
 }
