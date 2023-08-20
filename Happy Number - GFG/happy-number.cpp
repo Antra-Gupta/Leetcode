@@ -16,13 +16,13 @@ class Solution{
     }
 public:
 
-    int isHappy(int N){
-       int slow=N,fast=N;
-       do{
-           slow=square(slow);
-           fast=square(square(fast));
-       }while(slow!=fast);
-       return slow==1;
+    int isHappy(int n){
+      unordered_set<int> s;
+      while(n!=1 && !s.count(n)){
+          s.insert(n);
+          n=square(n);
+      }
+       return n==1;
     }
 };
 
