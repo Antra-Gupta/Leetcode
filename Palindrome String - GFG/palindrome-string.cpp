@@ -12,14 +12,16 @@ public:
 	
 	int isPalindrome(string S)
 	{
-	   int l=0;
-	   int h=S.length()-1;
-	   while(l<=h){
-	       if(S[l++]!=S[h--]){
-	         return 0;
-	       }
-	   }
-	   return 1;
+	    int n=S.length();
+	    int low=0,high=n-1;
+	    while(low<high){
+	        if(S[low]!=S[high]){
+	            return false;
+	        }
+	        low++;
+	        high--;
+	    }
+	    return true;
 	}
 
 };
